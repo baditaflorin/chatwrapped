@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>chatwrapped — your private relationship wrapped</title>
+    <meta
+      name="description"
+      content="Drop a WhatsApp or Telegram chat export and get your 'relationship wrapped' — message counts, who texts first, busiest hours, streaks, top emoji and more. Everything is computed in your browser; nothing is uploaded."
+    />
+    <script type="module" crossorigin src="./assets/index-Bky1I-bn.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CDJKpOc3.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <h1 class="brand">chat<span>wrapped</span></h1>
+      <div class="privacy-badge" title="No network requests are made with your data.">
+        🔒 100% on-device
+      </div>
+    </header>
+
+    <div class="privacy-banner" role="note">
+      <strong>Processed entirely in your browser.</strong> Your chat never leaves this device — no
+      upload, no server, no analytics.
+    </div>
+
+    <main class="wrap">
+      <!-- Landing / drop zone -->
+      <section id="intro" class="intro">
+        <div
+          id="dropzone"
+          class="dropzone"
+          role="button"
+          tabindex="0"
+          aria-label="Drop a chat export here or click to choose a file"
+        >
+          <div class="dropzone-inner">
+            <div class="dz-emoji">💬</div>
+            <p class="dz-title">Drop your chat export here</p>
+            <p class="dz-sub">
+              WhatsApp <code>.txt</code> or Telegram <code>.json</code> — or click to choose
+            </p>
+            <input type="file" id="file" accept=".txt,.json,application/json,text/plain" hidden />
+          </div>
+        </div>
+
+        <div class="intro-actions">
+          <button type="button" id="pick" class="primary">Choose a file</button>
+          <button type="button" id="sample">✨ Try with sample data</button>
+        </div>
+
+        <details class="how">
+          <summary>How do I export my chat?</summary>
+          <div class="how-body">
+            <p>
+              <strong>WhatsApp:</strong> open a chat → ⋮ / contact name → <em>Export chat</em> →
+              <em>Without media</em>. You get a <code>.txt</code> file.
+            </p>
+            <p>
+              <strong>Telegram (Desktop):</strong> open a chat → ⋮ → <em>Export chat history</em> →
+              format <em>Machine-readable JSON</em>. You get a <code>result.json</code>.
+            </p>
+            <p class="how-note">
+              Everything runs locally with the browser's <code>FileReader</code>. Open your devtools
+              Network tab if you want to confirm nothing is sent.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <!-- Results -->
+      <section id="results" class="results" hidden>
+        <div class="results-head">
+          <div>
+            <h2 id="results-title">Your chat, wrapped</h2>
+            <p id="results-meta" class="results-meta"></p>
+          </div>
+          <div class="results-actions">
+            <button type="button" id="export-png">⬇ Save card (PNG)</button>
+            <button type="button" id="reset">↺ New chat</button>
+          </div>
+        </div>
+
+        <!-- The exportable shareable card -->
+        <div id="card" class="card">
+          <div class="card-head">
+            <span class="card-brand">chatwrapped</span>
+            <span id="card-range" class="card-range"></span>
+          </div>
+          <div id="stat-grid" class="stat-grid"></div>
+          <div class="card-foot">
+            <span>made privately on your device · baditaflorin.github.io/chatwrapped</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="self-ref">
+      <a
+        id="source"
+        href="https://github.com/baditaflorin/chatwrapped"
+        target="_blank"
+        rel="noopener"
+        >source</a
+      >
+      ·
+      <a href="https://www.paypal.com/paypalme/florinbadita" target="_blank" rel="noopener"
+        >tip ♥</a
+      >
+      · <span id="version">vdev</span> · MIT
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  </body>
+</html>

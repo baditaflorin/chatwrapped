@@ -1,18 +1,31 @@
 {
-  "name": "chatwrapped",
-  "version": "0.1.0",
+  "bugs": {
+    "url": "https://github.com/baditaflorin/chatwrapped/issues"
+  },
+  "dependencies": {
+    "html-to-image": "^1.11.13"
+  },
   "description": "Drop a chat export, get your private 'relationship wrapped' — processed entirely in your browser.",
-  "type": "module",
-  "private": false,
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "jsdom": "^26.0.0",
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3",
+    "vite": "^7.0.0",
+    "vitest": "4.1.0"
+  },
+  "engines": {
+    "node": "\u003e=22"
+  },
   "homepage": "https://baditaflorin.github.io/chatwrapped/",
+  "license": "MIT",
+  "name": "chatwrapped",
+  "overrides": {},
+  "private": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/baditaflorin/chatwrapped.git"
   },
-  "bugs": {
-    "url": "https://github.com/baditaflorin/chatwrapped/issues"
-  },
-  "license": "MIT",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "bash scripts/build-pages.sh",
@@ -25,18 +38,6 @@
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "dependencies": {
-    "html-to-image": "^1.11.13"
-  },
-  "devDependencies": {
-    "@types/node": "^22.10.0",
-    "jsdom": "^26.0.0",
-    "prettier": "^3.7.4",
-    "typescript": "^5.9.3",
-    "vite": "^7.0.0",
-    "vitest": "^2.1.0"
-  },
-  "engines": {
-    "node": ">=22"
-  }
+  "type": "module",
+  "version": "0.1.0"
 }

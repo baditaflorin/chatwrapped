@@ -224,9 +224,15 @@ export function longestStreak(messages: Message[]): Streak {
 
 // Match a single emoji grapheme. Covers the main pictographic blocks plus
 // variation selectors / ZWJ sequences and skin-tone modifiers so "👍🏽" and
-// "👨‍👩‍👧" count as one each.
+// "👨‍👩‍👧" count as one each, plus two special-cased sequences that are NOT
+// covered by \p{Extended_Pictographic} at all:
+//   - flag emoji: a pair of Regional_Indicator letters, e.g. "🇺🇸"
+//   - keycap emoji: digit/#/* + optional VS16 + combining enclosing keycap,
+//     e.g. "1️⃣"
+// Without these, chats containing flags or keycaps would silently undercount
+// "top emoji" for exactly those glyphs.
 const EMOJI_RE =
-  /(\p{Extended_Pictographic}(?:️)?(?:[\u{1F3FB}-\u{1F3FF}])?(?:‍\p{Extended_Pictographic}(?:️)?(?:[\u{1F3FB}-\u{1F3FF}])?)*)/gu;
+  /(\p{Regional_Indicator}{2}|[0-9#*]️?⃣|\p{Extended_Pictographic}(?:️)?(?:[\u{1F3FB}-\u{1F3FF}])?(?:‍\p{Extended_Pictographic}(?:️)?(?:[\u{1F3FB}-\u{1F3FF}])?)*)/gu;
 
 export interface EmojiCount {
   emoji: string;

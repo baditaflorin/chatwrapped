@@ -276,6 +276,22 @@ describe("stats", () => {
     expect(owl.count).toBe(2);
   });
 
+  it("counts flag and keycap emoji, which are not Extended_Pictographic", () => {
+    const flags: Message[] = [
+      msg(at(2024, 4, 1), "Alex", "trip to the US 🇺🇸 and UK 🇬🇧 next year"),
+      msg(at(2024, 4, 2), "Sam", "wait also 🇺🇸 again, and a countdown 1️⃣2️⃣3️⃣ go #️⃣"),
+    ];
+    const e = topEmoji(flags);
+    const us = e.find((x) => x.emoji === "🇺🇸")!;
+    expect(us.count).toBe(2);
+    const uk = e.find((x) => x.emoji === "🇬🇧")!;
+    expect(uk.count).toBe(1);
+    expect(e.find((x) => x.emoji === "1️⃣")!.count).toBe(1);
+    expect(e.find((x) => x.emoji === "2️⃣")!.count).toBe(1);
+    expect(e.find((x) => x.emoji === "3️⃣")!.count).toBe(1);
+    expect(e.find((x) => x.emoji === "#️⃣")!.count).toBe(1);
+  });
+
   it("ranks top words with stop-word filtering", () => {
     const w = topWords(fixture);
     const words = w.map((x) => x.word);

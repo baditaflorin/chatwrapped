@@ -12,7 +12,7 @@
     "prettier": "^3.7.4",
     "typescript": "^5.9.3",
     "vite": "^7.0.0",
-    "vitest": "4.1.0"
+    "vitest": "4.1.11"
   },
   "engines": {
     "node": "\u003e=22"
